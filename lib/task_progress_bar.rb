@@ -10,7 +10,11 @@ class TaskProgressBar
 
   def step
     self.count
-    print "\r[%d/%d][%s][%d%%][%s][%s]" % [@i, @total, elapsed_bar.green, elapsed_percent, elapsed_time_formated, time_left]
+    STDOUT.print self.bar
+  end
+
+  def bar
+    "\r[%d/%d][%s][%d%%][%s][%s]" % [@i, @total, green_elapsed_bar, elapsed_percent, elapsed_time_formated, time_left]
   end
 
   def count(value = 1)
@@ -27,6 +31,10 @@ class TaskProgressBar
 
   def bar_quantity
     ((@i*1.00/total_progress).to_i)
+  end
+
+  def green_elapsed_bar
+    "\033[32m#{ elapsed_bar }\033[0m"
   end
 
   def elapsed_bar

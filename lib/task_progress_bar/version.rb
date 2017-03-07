@@ -1,3 +1,3 @@
-module TaskProgressBar
-  VERSION = '1.0.0'
+class TaskProgressBar
+  VERSION = '1.0.1'
 end
